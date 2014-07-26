@@ -29,10 +29,14 @@ string resourcePath() {
 }
 #endif
 
+
+const int WIDTH = 800;
+const int HEIGHT = 600;
+
 int main(int, char const**)
 {
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
+    sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "Shine!");
 
     // Set the Icon
     sf::Image icon;
@@ -41,13 +45,23 @@ int main(int, char const**)
         return EXIT_FAILURE;
     }
     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
-
+    
     // Load a sprite to display
     sf::Texture texture;
-    if (!texture.loadFromFile(resourcePath() + "cute_image.jpg")) {
+    if (!texture.loadFromFile(resourcePath() + "background.png")) {
         return EXIT_FAILURE;
     }
-    sf::Sprite sprite(texture);
+    sf::Sprite background(texture);
+    
+    // Load a sprite to display
+    sf::Texture playerTexture;
+    if (!playerTexture.loadFromFile(resourcePath() + "player.png")) {
+        return EXIT_FAILURE;
+    }
+    sf::Sprite playerSprite(playerTexture);
+    
+    //move the player sprite to the centre of the screen ... ish
+    playerSprite.move(WIDTH/2, HEIGHT/2);
 
     // Create a graphical text to display
     sf::Font font;
@@ -68,6 +82,12 @@ int main(int, char const**)
     // Play the music
     music.play();
 
+    
+    //scrolling view
+    sf::View view(sf::FloatRect(0, 0, WIDTH, HEIGHT));
+    
+    float scrollX = 1;
+    
     // Start the game loop
     while (window.isOpen())
     {
@@ -88,9 +108,17 @@ int main(int, char const**)
 
         // Clear screen
         window.clear();
-
-        // Draw the sprite
-        window.draw(sprite);
+        
+        //scroll the view
+        view.move(scrollX, 0);
+        window.setView(view);
+        
+        // Draw the background
+        window.draw(background);
+        
+        // Draw the player
+        playerSprite.move(scrollX, 0);
+        window.draw(playerSprite);
 
         // Draw the string
         window.draw(text);

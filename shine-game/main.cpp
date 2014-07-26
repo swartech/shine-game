@@ -16,9 +16,16 @@
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+#include <string>
 
 // Here is a small helper for you ! Have a look.
 #include "ResourcePath.hpp"
+
+using namespace std;
+
+string resourcePath() {
+   return "";
+}
 
 int main(int, char const**)
 {
@@ -28,6 +35,7 @@ int main(int, char const**)
     // Set the Icon
     sf::Image icon;
     if (!icon.loadFromFile(resourcePath() + "icon.png")) {
+    //if (!icon.loadFromFile("icon.png")) {
         return EXIT_FAILURE;
     }
     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
@@ -42,6 +50,7 @@ int main(int, char const**)
     // Create a graphical text to display
     sf::Font font;
     if (!font.loadFromFile(resourcePath() + "sansation.ttf")) {
+    //if (!font.loadFromFile("sansation.ttf")) {
         return EXIT_FAILURE;
     }
     sf::Text text("Hello SFML", font, 50);
@@ -50,6 +59,7 @@ int main(int, char const**)
     // Load a music to play
     sf::Music music;
     if (!music.openFromFile(resourcePath() + "nice_music.ogg")) {
+    //if (!music.openFromFile("nice_music.ogg")) {
         return EXIT_FAILURE;
     }
 
@@ -87,5 +97,7 @@ int main(int, char const**)
         window.display();
     }
 
-    return EXIT_SUCCESS;
+    //return EXIT_SUCCESS;
+
+    return 0;
 }

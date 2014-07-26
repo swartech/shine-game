@@ -8,10 +8,11 @@ class Player : public GameObject
 {
     public:
         Player();
-        Player( sf::Sprite sprite, sf::Vector2f position,  sf::Vector2f velocity, int depth, bool alive );
+        Player( sf::Texture texture, sf::Vector2f position,  sf::Vector2f velocity, int depth, bool alive, bool collidable);
         virtual ~Player();
     protected:
     private:
+        int luminosity;
 };
 
 #endif // PLAYER_H

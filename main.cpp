@@ -37,6 +37,7 @@ int main(int, char const**)
 {
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "Shine!");
+    window.setFramerateLimit(30);
 
     // Set the Icon
     sf::Image icon;
@@ -45,21 +46,22 @@ int main(int, char const**)
         return EXIT_FAILURE;
     }
     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
-    
+
     // Load a sprite to display
     sf::Texture texture;
     if (!texture.loadFromFile(resourcePath() + "background.png")) {
         return EXIT_FAILURE;
     }
     sf::Sprite background(texture);
-    
+
     // Load a sprite to display
     sf::Texture playerTexture;
     if (!playerTexture.loadFromFile(resourcePath() + "player.png")) {
         return EXIT_FAILURE;
     }
     sf::Sprite playerSprite(playerTexture);
-    
+    playerSprite.scale(sf::Vector2f(0.5f, 0.5f));
+
     //move the player sprite to the centre of the screen ... ish
     playerSprite.move(WIDTH/2, HEIGHT/2);
 
@@ -82,12 +84,12 @@ int main(int, char const**)
     // Play the music
     music.play();
 
-    
+
     //scrolling view
     sf::View view(sf::FloatRect(0, 0, WIDTH, HEIGHT));
-    
-    float scrollX = 1;
-    
+
+    float scrollX = 10;
+
     // Start the game loop
     while (window.isOpen())
     {
@@ -108,14 +110,14 @@ int main(int, char const**)
 
         // Clear screen
         window.clear();
-        
+
         //scroll the view
         view.move(scrollX, 0);
         window.setView(view);
-        
+
         // Draw the background
         window.draw(background);
-        
+
         // Draw the player
         playerSprite.move(scrollX, 0);
         window.draw(playerSprite);

@@ -20,6 +20,7 @@
 
 // Here is a small helper for you ! Have a look.
 #include "ResourcePath.hpp"
+#include "gameObject.h"
 
 using namespace std;
 

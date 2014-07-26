@@ -1,12 +1,16 @@
+#include <SFML/Audio.hpp>
+#include <SFML/Graphics.hpp>
+
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
 
-class gameObject
+class GameObject
 {
     public:
-        gameObject();
-        virtual ~gameObject();
+        GameObject(sf::Sprite sprite, sf::Vector2f position,  sf::Vector2f velocity, int depth, bool alive);
+        GameObject();
+        virtual ~GameObject();
     protected:
     private:
         sf::Sprite sprite;

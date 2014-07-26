@@ -401,12 +401,20 @@
 1406381719 c:\users\samuel\documents\github\shine-game\shine-game\resourcepath.hpp
 	<string>
 
-1406392746 source:c:\users\samuel\documents\github\shine-game\main.cpp
+1406395348 source:c:\users\samuel\documents\github\shine-game\main.cpp
 	<SFML/Audio.hpp>
 	<SFML/Graphics.hpp>
 	<string>
 	"ResourcePath.hpp"
+	"gameObject.h"
 
 1406389995 c:\users\samuel\documents\github\shine-game\resourcepath.hpp
 	<string>
+
+1406397045 c:\users\samuel\documents\github\shine-game\gameobject.h
+	<SFML/Audio.hpp>
+	<SFML/Graphics.hpp>
+
+1406396462 source:c:\users\samuel\documents\github\shine-game\gameobject.cpp
+	"gameObject.h"
 

@@ -65,15 +65,6 @@ int main(int, char const**)
     }
     sf::Sprite background(texture);
 
-    // Load a sprite to display
-
-    //sf::Texture playerTexture;
-    //if (!playerTexture.loadFromFile(resourcePath() + "player.png")) {
-    //    return EXIT_FAILURE;
-    //}
-    //sf::Sprite playerSprite(playerTexture);
-    //playerSprite.scale(sf::Vector2f(0.5f, 0.5f));
-
     //move the player sprite to the centre of the screen ... ish
     player.sprite.move(player.position);
 

@@ -46,8 +46,8 @@ int main(int, char const**)
 
     //Declare Player
     sf:: Texture playerTexture;
-    playerTexture.loadFromFile("player.png");
-    Player player(playerTexture, sf::Vector2f(WIDTH/2, HEIGHT/2), sf::Vector2f(10, 0), 1, true, true);
+    playerTexture.loadFromFile(resourcePath() + "player.png");
+    Player player(playerTexture, sf::Vector2f(WIDTH/2, HEIGHT/2), sf::Vector2f(9, 0), 1, true, true);
     //Chaser chaser();
 
     // Set the Icon
@@ -136,7 +136,7 @@ int main(int, char const**)
         // Draw the player
         if(background.getGlobalBounds().width - (WIDTH / 2) > view.getCenter().x)
         {
-            player.sprite.move(scrollX, 0);
+            player.sprite.move(player.velocity.x, 0);
             window.draw(player.sprite);
         }
         

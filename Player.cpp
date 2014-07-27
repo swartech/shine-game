@@ -1,11 +1,18 @@
 #include "Player.h"
 
-Player::Player()
+inline Player::Player()
 {
-    //ctor
+    this->luminosity = 0;
 }
 
-Player::~Player()
+inline Player::Player(sf::Texture texture, sf::Vector2f position, sf::Vector2f velocity, int depth, bool alive, bool collidable)
 {
-    //dtor
+    this->luminosity = 50;
 }
+
+inline Player::~Player()
+{
+    //virtual GameObject();
+}
+
+

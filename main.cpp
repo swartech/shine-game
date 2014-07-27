@@ -21,6 +21,10 @@
 // Here is a small helper for you ! Have a look.
 #include "ResourcePath.hpp"
 #include "gameObject.h"
+#include "Player.h"
+#include "Chaser.h"
+#include "Tile.h"
+#include "LightOrb.h"
 
 using namespace std;
 
@@ -32,13 +36,20 @@ string resourcePath() {
 
 
 const int WIDTH = 800;
-const int HEIGHT = 600;
+const int HEIGHT = 640;
 
 int main(int, char const**)
 {
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "Shine!");
     window.setFramerateLimit(30);
+
+    //Declare Player
+    sf:: Texture playerTexture;
+    playerTexture.loadFromFile("player.png");
+    Player player;
+    player = Player(playerTexture, sf::Vector2f(WIDTH/2, HEIGHT/2), sf::Vector2f(10, 0), 1, true, true);
+    //Chaser chaser();
 
     // Set the Icon
     sf::Image icon;
@@ -56,15 +67,16 @@ int main(int, char const**)
     sf::Sprite background(texture);
 
     // Load a sprite to display
-    sf::Texture playerTexture;
-    if (!playerTexture.loadFromFile(resourcePath() + "player.png")) {
-        return EXIT_FAILURE;
-    }
-    sf::Sprite playerSprite(playerTexture);
+
+    //sf::Texture playerTexture;
+    //if (!playerTexture.loadFromFile(resourcePath() + "player.png")) {
+    //    return EXIT_FAILURE;
+    //}
+    //sf::Sprite playerSprite(playerTexture);
     //playerSprite.scale(sf::Vector2f(0.5f, 0.5f));
 
     //move the player sprite to the centre of the screen ... ish
-    playerSprite.move(WIDTH/2, HEIGHT/2);
+    player.getSprite().move(player.getPosition());
 
     // Create a graphical text to display
     sf::Font font;
@@ -125,12 +137,10 @@ int main(int, char const**)
         // Draw the player
         if(background.getGlobalBounds().width - (WIDTH / 2) > view.getCenter().x)
         {
-            playerSprite.move(scrollX, 0);
+            player.getSprite().move(scrollX, 0);
+            window.draw(player.getSprite());
         }
         
-        
-        window.draw(playerSprite);
-
         // Draw the string
         window.draw(text);
 

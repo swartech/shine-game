@@ -9,7 +9,7 @@ Player::Player(sf::Texture texture, sf::Vector2f position, sf::Vector2f velocity
 {
     this->luminosity = 50;
     this->texture = texture;
-    this->sprite.setTexture(texture);
+    this->sprite.setTexture(this->texture);
     this->position = position;
     this->velocity = velocity;
     this->depth = depth;

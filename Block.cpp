@@ -14,12 +14,9 @@ Block::Block()
     //ctor
 }
 
-Block::Block(sf::Vector2f position,  sf::Vector2f velocity, int depth, bool alive)
+Block::Block(sf::Sprite sprite, sf::Vector2f position,  sf::Vector2f velocity, int depth, bool alive)
 {
-    sf:: Texture texture;
-    texture.loadFromFile(resourcePath() + "block.png");
-    this->texture = texture;
-    this->sprite.setTexture(texture);
+    this->sprite = sprite;
     this->sprite.move(position);
     this->position = position;
     this->velocity = velocity;

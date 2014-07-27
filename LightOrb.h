@@ -7,8 +7,9 @@
 class LightOrb : public Tile
 {
     public:
-        LightOrb(sf::Vector2f position,  sf::Vector2f velocity, int depth, bool alive);
+        LightOrb(sf::Sprite sprite, sf::Vector2f position,  sf::Vector2f velocity, int depth, bool alive);
         LightOrb();
+        LightOrb(const LightOrb& other);
         virtual ~LightOrb();
     
         int luminosity;

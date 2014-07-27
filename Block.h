@@ -15,7 +15,7 @@
 class Block : public Tile
 {
 public:
-    Block(sf::Vector2f position,  sf::Vector2f velocity, int depth, bool alive);
+    Block(sf::Sprite sprite, sf::Vector2f position,  sf::Vector2f velocity, int depth, bool alive);
     Block();
     virtual ~Block();
     

@@ -43,12 +43,13 @@ int main(int, char const**)
 {
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "Shine!");
-    window.setFramerateLimit(30);
-
+    //window.setFramerateLimit(30);
+    window.setVerticalSyncEnabled(true);
+    
     //Declare Player
     sf:: Texture playerTexture;
     playerTexture.loadFromFile(resourcePath() + "player.png");
-    Player player(playerTexture, sf::Vector2f(WIDTH/2, HEIGHT/2), sf::Vector2f(9, 0), 1, true, true);
+    Player player(playerTexture, sf::Vector2f(WIDTH/2, HEIGHT/2), sf::Vector2f(5, 0), 1, true, true);
     //Chaser chaser();
 
     // Set the Icon
@@ -65,6 +66,21 @@ int main(int, char const**)
         return EXIT_FAILURE;
     }
     sf::Sprite background(texture);
+    background.scale(10, 10);
+    
+    // Load a sprite to display
+    sf::Texture lightOrbTexture;
+    if (!lightOrbTexture.loadFromFile(resourcePath() + "lightOrb.png")) {
+        return EXIT_FAILURE;
+    }
+    sf::Sprite lightOrbSprite(lightOrbTexture);
+    
+    // Load a sprite to display
+    sf::Texture blockTexture;
+    if (!blockTexture.loadFromFile(resourcePath() + "block.png")) {
+        return EXIT_FAILURE;
+    }
+    sf::Sprite blockSprite(blockTexture);
 
     //move the player sprite to the centre of the screen ... ish
     player.sprite.move(player.position);
@@ -80,7 +96,7 @@ int main(int, char const**)
     
     vector<GameObject> gameObjects;
     
-    Level level(resourcePath() + "levelTest.png");
+    Level level(resourcePath() + "levelTest.png", lightOrbSprite, blockSprite);
     cout << level.tilemap.size();
     
     for (int i = 0; i < level.tilemap.size(); ++i)
@@ -104,7 +120,9 @@ int main(int, char const**)
     //scrolling view
     sf::View view(sf::FloatRect(0, 0, WIDTH, HEIGHT));
 
-    float scrollX = 10;
+    float scrollX = player.velocity.x + 0.5;
+    
+    sf::Sprite overlay;
 
     // Start the game loop
     while (window.isOpen())
@@ -139,7 +157,7 @@ int main(int, char const**)
         
         for (int i = 0; i < gameObjects.size(); ++i)
         {
-            cout << gameObjects[i].sprite.getGlobalBounds().top << "\n";
+            //cout << gameObjects[i].sprite.getGlobalBounds().top << "\n";
             window.draw(gameObjects[i].sprite);
         }
 

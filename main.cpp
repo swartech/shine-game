@@ -61,7 +61,7 @@ int main(int, char const**)
         return EXIT_FAILURE;
     }
     sf::Sprite playerSprite(playerTexture);
-    playerSprite.scale(sf::Vector2f(0.5f, 0.5f));
+    //playerSprite.scale(sf::Vector2f(0.5f, 0.5f));
 
     //move the player sprite to the centre of the screen ... ish
     playerSprite.move(WIDTH/2, HEIGHT/2);
@@ -113,14 +113,22 @@ int main(int, char const**)
         window.clear();
 
         //scroll the view
-        view.move(scrollX, 0);
-        window.setView(view);
-
+        if(background.getGlobalBounds().width - (WIDTH / 2) > view.getCenter().x)
+        {
+            view.move(scrollX, 0);
+            window.setView(view);
+        }
+        
         // Draw the background
         window.draw(background);
 
         // Draw the player
-        playerSprite.move(scrollX, 0);
+        if(background.getGlobalBounds().width - (WIDTH / 2) > view.getCenter().x)
+        {
+            playerSprite.move(scrollX, 0);
+        }
+        
+        
         window.draw(playerSprite);
 
         // Draw the string

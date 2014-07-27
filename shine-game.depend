@@ -401,27 +401,31 @@
 1406381719 c:\users\samuel\documents\github\shine-game\shine-game\resourcepath.hpp
 	<string>
 
-1406395348 source:c:\users\samuel\documents\github\shine-game\main.cpp
+1406462980 source:c:\users\samuel\documents\github\shine-game\main.cpp
 	<SFML/Audio.hpp>
 	<SFML/Graphics.hpp>
 	<string>
 	"ResourcePath.hpp"
 	"gameObject.h"
+	"Player.h"
+	"Chaser.h"
+	"Tile.h"
+	"LightOrb.h"
 
 1406389995 c:\users\samuel\documents\github\shine-game\resourcepath.hpp
 	<string>
 
-1406401605 c:\users\samuel\documents\github\shine-game\gameobject.h
+1406419242 c:\users\samuel\documents\github\shine-game\gameobject.h
 	<SFML/Audio.hpp>
 	<SFML/Graphics.hpp>
 
-1406401854 source:c:\users\samuel\documents\github\shine-game\gameobject.cpp
+1406420853 source:c:\users\samuel\documents\github\shine-game\gameobject.cpp
 	"gameObject.h"
 
-1406396263 source:c:\users\samuel\documents\github\shine-game\player.cpp
+1406462899 source:c:\users\samuel\documents\github\shine-game\player.cpp
 	"Player.h"
 
-1406401605 c:\users\samuel\documents\github\shine-game\player.h
+1406463034 c:\users\samuel\documents\github\shine-game\player.h
 	"gameObject.h"
 
 1406400328 source:c:\users\samuel\documents\github\shine-game\chaser.cpp
@@ -433,7 +437,7 @@
 1406400078 source:c:\users\samuel\documents\github\shine-game\lightorb.cpp
 	"LightOrb.h"
 
-1406401605 c:\users\samuel\documents\github\shine-game\lightorb.h
+1406419307 c:\users\samuel\documents\github\shine-game\lightorb.h
 	"Tile.h"
 
 1406401605 c:\users\samuel\documents\github\shine-game\tile.h
@@ -441,4 +445,7 @@
 
 1406397978 source:c:\users\samuel\documents\github\shine-game\tile.cpp
 	"Tile.h"
+
+1406462738 c:\users\samuel\documents\github\shine-game\player.cpp
+	"Player.h"
 

@@ -12,8 +12,19 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-Weffc++" />
 					<Add option="-g" />
+					<Add directory="../../../Desktop/SFML-2.1/include" />
+					<Add directory="include" />
+					<Add directory="../shine-game" />
 				</Compiler>
+				<Linker>
+					<Add library="sfml-audio" />
+					<Add library="sfml-graphics" />
+					<Add library="sfml-window" />
+					<Add library="sfml-system" />
+					<Add directory="../../../Desktop/SFML-2.1/lib" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/shine-game" prefix_auto="1" extension_auto="1" />
@@ -22,6 +33,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
+					<Add directory="../shine-game" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -31,6 +44,26 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Chaser.cpp" />
+		<Unit filename="Chaser.h" />
+		<Unit filename="Chaser.png" />
+		<Unit filename="LightOrb.cpp" />
+		<Unit filename="LightOrb.h" />
+		<Unit filename="Player.cpp" />
+		<Unit filename="Player.h" />
+		<Unit filename="ResourcePath.hpp" />
+		<Unit filename="Tile.cpp" />
+		<Unit filename="Tile.h" />
+		<Unit filename="background.png" />
+		<Unit filename="gameObject.cpp" />
+		<Unit filename="gameObject.h" />
+		<Unit filename="icon.png" />
+		<Unit filename="main.cpp" />
+		<Unit filename="player.png">
+			<Option link="1" />
+		</Unit>
+		<Unit filename="sansation.ttf" />
+		<Unit filename="shine-game/ResourcePath.hpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

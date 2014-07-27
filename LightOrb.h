@@ -11,8 +11,9 @@ class LightOrb : public Tile
         LightOrb();
         virtual ~LightOrb();
     protected:
-    private:
         int luminosity;
+    private:
+
 };
 
 #endif // LIGHTORB_H

@@ -7,11 +7,12 @@
 class LightOrb : public Tile
 {
     public:
-        LightOrb(sf::Texture texture, sf::Vector2f position,  sf::Vector2f velocity, int depth, bool alive, bool collidable);
+        LightOrb(sf::Vector2f position,  sf::Vector2f velocity, int depth, bool alive);
         LightOrb();
         virtual ~LightOrb();
-    protected:
+    
         int luminosity;
+    protected:
     private:
 
 };

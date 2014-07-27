@@ -1,51 +1,41 @@
 #include "level.h"
 #include <fstream>
+#include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Image.hpp>
+#include "LightOrb.h"
+#include "Block.h"
 
-level::level(std::string fname)
+Level::Level(std::string fname)
 {
-	std::ifstream levelfile;
-	
-	levelfile.open(fname);
-
-	if(levelfile.is_open()){
-		std::string vline;
-		while(!levelfile.eof()){
-			std::getline(levelfile,vline);
-			std::vector <char> linerec;
-			for(std::string::iterator it = vline.begin(); it != vline.end(); ++it) {
-				linerec.push_back(*it);
-			}
-			blocks.push_back(linerec);
-		}
-	}
-	else {
-		std::cout << "Could not load level. Unable to find file `" << fname << "'." << std::endl;
-	}
-	levelfile.close();
-}
-
-void level::readout()
-{
-	std::string message;
-	message = "";
-	for(std::vector< std::vector <char>>::iterator it = blocks.begin(); it !=blocks.end(); ++it){
-		for(std::vector <char>::iterator it2 = (*it).begin(); it2 != (*it).end(); ++it2){
-			message = message + (*it2) + "";
-		}
-		message = message + "\n";
-	}
-	std::cout << message;
-}
-
-void level::render()
-{
-	int width(0);
-	for(std::vector< std::vector <char>>::iterator it = blocks.begin(); it !=blocks.end(); ++it){
-		int height(0);
-		for(std::vector <char>::iterator it2 = (*it).begin(); it2 != (*it).end(); ++it2){
-			
-			height = height + 32;
-		}
-		width = width + 32;
-	}
+    sf::Image levelImage;
+    levelImage.loadFromFile(fname);
+    sf::Vector2u levelImageSize = levelImage.getSize();
+    int tileWidth = 32;
+    int tileHeight = 32;
+    int currentX = 0;
+    int currentY = 0;
+    for (int i = 0; i < levelImageSize.x; ++i)
+    {
+        currentY = 0;
+        for (int j = 0; j < levelImageSize.y; ++j)
+        {
+            sf::Color pixel =levelImage.getPixel(i, j);
+            
+            if (pixel == sf::Color(0, 0, 0))
+            {
+                //it's a platform block
+                this->tilemap.push_back(Block(Block(sf::Vector2f(currentX, currentY), sf::Vector2f(0, 0), 1, true)));
+            }
+            
+            else if (pixel == sf::Color(255, 255, 255))
+            {
+                //it's a light orb
+                this->tilemap.push_back(LightOrb(LightOrb(sf::Vector2f(currentX, currentY), sf::Vector2f(0, 0), 1, true)));
+            }
+        
+            currentY += tileHeight;
+        }
+        currentX += tileWidth;
+        
+    }
 }

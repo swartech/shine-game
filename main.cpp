@@ -25,6 +25,7 @@
 #include "Chaser.h"
 #include "Tile.h"
 #include "LightOrb.h"
+#include "level.h"
 
 using namespace std;
 
@@ -76,6 +77,18 @@ int main(int, char const**)
     }
     sf::Text text("Hello SFML", font, 50);
     text.setColor(sf::Color::Black);
+    
+    vector<GameObject> gameObjects;
+    
+    Level level(resourcePath() + "levelTest.png");
+    cout << level.tilemap.size();
+    
+    for (int i = 0; i < level.tilemap.size(); ++i)
+    {
+        gameObjects.push_back(level.tilemap[i]);
+    }
+    cout << gameObjects.size();
+    
 
     // Load a music to play
     sf::Music music;
@@ -123,6 +136,12 @@ int main(int, char const**)
         
         // Draw the background
         window.draw(background);
+        
+        for (int i = 0; i < gameObjects.size(); ++i)
+        {
+            cout << gameObjects[i].sprite.getGlobalBounds().top << "\n";
+            window.draw(gameObjects[i].sprite);
+        }
 
         // Draw the player
         if(background.getGlobalBounds().width - (WIDTH / 2) > view.getCenter().x)

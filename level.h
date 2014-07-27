@@ -1,13 +1,14 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <Tile.h>
 
-class level
+class Level
 {
 	private:
-		std::vector< std::vector<char> > blocks;
 	public:
-		level(std::string fname);
-		void readout();
-		void render();
+		Level(std::string fname);
+    
+        //variables
+        std::vector<Tile> tilemap;
 };

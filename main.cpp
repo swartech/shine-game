@@ -47,8 +47,7 @@ int main(int, char const**)
     //Declare Player
     sf:: Texture playerTexture;
     playerTexture.loadFromFile("player.png");
-    Player player;
-    player = Player(playerTexture, sf::Vector2f(WIDTH/2, HEIGHT/2), sf::Vector2f(10, 0), 1, true, true);
+    Player player(playerTexture, sf::Vector2f(WIDTH/2, HEIGHT/2), sf::Vector2f(10, 0), 1, true, true);
     //Chaser chaser();
 
     // Set the Icon
@@ -76,7 +75,7 @@ int main(int, char const**)
     //playerSprite.scale(sf::Vector2f(0.5f, 0.5f));
 
     //move the player sprite to the centre of the screen ... ish
-    player.getSprite().move(player.getPosition());
+    player.sprite.move(player.position);
 
     // Create a graphical text to display
     sf::Font font;
@@ -137,8 +136,8 @@ int main(int, char const**)
         // Draw the player
         if(background.getGlobalBounds().width - (WIDTH / 2) > view.getCenter().x)
         {
-            player.getSprite().move(scrollX, 0);
-            window.draw(player.getSprite());
+            player.sprite.move(scrollX, 0);
+            window.draw(player.sprite);
         }
         
         // Draw the string

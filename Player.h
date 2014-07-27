@@ -7,11 +7,20 @@
 class Player : public GameObject
 {
     public:
-        inline Player();
-        inline Player(sf::Texture texture, sf::Vector2f position, sf::Vector2f velocity, int depth, bool alive, bool collidable);
-        inline ~Player();
-    protected:
+        Player();
+        Player(sf::Texture texture, sf::Vector2f position, sf::Vector2f velocity, int depth, bool alive, bool collidable);
+        ~Player();
+    
         int luminosity;
+        sf::Sprite sprite;
+        sf::Texture texture;
+        sf::Vector2f position, velocity;
+        int depth;
+        bool alive;
+        bool collidable;
+        sf::FloatRect boundingBox;
+    
+    protected:
     private:
 
 };

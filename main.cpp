@@ -125,7 +125,7 @@ int main(int, char const**)
     
     // Load a music to play
     sf::Music music;
-    if (!music.openFromFile(resourcePath() + "nice_music.ogg")) {
+    if (!music.openFromFile(resourcePath() + "music.ogg")) {
     //if (!music.openFromFile("nice_music.ogg")) {
         return EXIT_FAILURE;
     }
@@ -182,7 +182,10 @@ int main(int, char const**)
             player.update();//sprite.move(player.velocity.x, 0);
             chaser.update();//sprite.move(chaser.velocity.x, 0);
         }
-        
+//        else
+//        {
+//            music.stop();
+//        }
         window.draw(player.sprite);
         
         window.draw(chaser.sprite);

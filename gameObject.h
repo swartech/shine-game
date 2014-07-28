@@ -12,13 +12,15 @@ class GameObject
         GameObject();
         virtual ~GameObject();
     
+        void update();
+    
         static bool compareDepth(const GameObject& a, const GameObject& b);
     
         std::string name;
         sf::Sprite sprite;
         sf::Texture texture;
         sf::Vector2f position, velocity;
-        int depth;
+        int width, height, depth;
         bool alive, collidable;
         sf::FloatRect boundingBox;
     protected:

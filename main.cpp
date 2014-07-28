@@ -50,9 +50,10 @@ int main(int, char const**)
     
     //Declare Player
     sf:: Texture playerTexture;
-    playerTexture.loadFromFile(resourcePath() + "player.png");
+    playerTexture.loadFromFile(resourcePath() + "playerSheet.png");
     sf::Sprite playerSprite(playerTexture);
-    Player player(playerSprite, sf::Vector2f(WIDTH/2, HEIGHT/2), sf::Vector2f(5, 0), true, true);
+    playerSprite.setTextureRect(sf::IntRect(0, 0, 32, 128));
+    Player player(playerTexture, playerSprite, sf::Vector2f(WIDTH/2, HEIGHT/2), sf::Vector2f(5, 0), true, true);
     
     
     sf:: Texture chaserTexture;
@@ -178,8 +179,8 @@ int main(int, char const**)
         // Draw the player and the chaser
         if(background.getGlobalBounds().width - (WIDTH / 2) > view.getCenter().x)
         {
-            player.sprite.move(player.velocity.x, 0);
-            chaser.sprite.move(chaser.velocity.x, 0);
+            player.update();//sprite.move(player.velocity.x, 0);
+            chaser.update();//sprite.move(chaser.velocity.x, 0);
         }
         
         window.draw(player.sprite);

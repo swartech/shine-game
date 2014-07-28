@@ -27,3 +27,9 @@ bool GameObject::compareDepth(const GameObject& a, const GameObject& b)
 {
     return a.depth < b.depth;
 }
+
+void GameObject::update()
+{
+    this->position += this->velocity;
+    this->sprite.setPosition(this->position);
+}

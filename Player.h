@@ -8,15 +8,15 @@ class Player : public GameObject
 {
     public:
         Player();
-        Player(sf::Sprite sprite, sf::Vector2f position, sf::Vector2f velocity, bool alive, bool collidable);
+    Player(sf::Texture spritesheet, sf::Sprite sprite, sf::Vector2f position, sf::Vector2f velocity, bool alive, bool collidable);
         ~Player();
+        void update();
     
-        int luminosity;
         std::string name;
         sf::Sprite sprite;
-        sf::Texture texture;
+        sf::Texture spritesheet;
         sf::Vector2f position, velocity;
-        int depth;
+        int width, height, depth, frameCount, currentFrame, luminosity;
         bool alive;
         bool collidable;
         sf::FloatRect boundingBox;

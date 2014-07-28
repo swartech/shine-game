@@ -25,13 +25,13 @@ Level::Level(std::string fname, sf::Sprite lightOrbSprite, sf::Sprite blockSprit
             if (pixel == sf::Color(0, 0, 0))
             {
                 //it's a platform block
-                this->tilemap.push_back(Block(blockSprite, sf::Vector2f(currentX, currentY), sf::Vector2f(0, 0), 1, true));
+                this->tilemap.push_back(Block(blockSprite, sf::Vector2f(currentX, currentY), sf::Vector2f(0, 0), true));
             }
             
             else if (pixel == sf::Color(255, 255, 255))
             {
                 //it's a light orb
-                this->tilemap.push_back(LightOrb(lightOrbSprite, sf::Vector2f(currentX, currentY), sf::Vector2f(0, 0), 1, true));
+                this->tilemap.push_back(LightOrb(lightOrbSprite, sf::Vector2f(currentX, currentY), sf::Vector2f(0, 0), true));
             }
         
             currentY += tileHeight;

@@ -7,7 +7,7 @@
 class Chaser : public GameObject
 {
     public:
-        Chaser(sf::Texture texture, sf::Vector2f position, sf::Vector2f velocity, int depth, bool alive, bool collidable);
+        Chaser(sf::Sprite sprite, sf::Vector2f position, sf::Vector2f velocity);
         Chaser();
         virtual ~Chaser();
     protected:

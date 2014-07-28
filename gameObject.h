@@ -1,6 +1,6 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
-
+#include <string>
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
@@ -8,10 +8,13 @@
 class GameObject
 {
     public:
-        GameObject(sf::Texture texture, sf::Vector2f position, sf::Vector2f velocity, int depth, bool alive, bool collidable);
+        GameObject(std::string name, sf::Sprite sprite, sf::Vector2f position, sf::Vector2f velocity, int depth, bool alive, bool collidable);
         GameObject();
         virtual ~GameObject();
     
+        static bool compareDepth(const GameObject& a, const GameObject& b);
+    
+        std::string name;
         sf::Sprite sprite;
         sf::Texture texture;
         sf::Vector2f position, velocity;

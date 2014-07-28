@@ -5,9 +5,10 @@ GameObject::GameObject()
     this->alive = false;
 }
 
-GameObject::GameObject(sf::Texture texture, sf::Vector2f position,  sf::Vector2f velocity, int depth, bool alive, bool collidable)
+GameObject::GameObject(std::string name, sf::Sprite sprite, sf::Vector2f position,  sf::Vector2f velocity, int depth, bool alive, bool collidable)
 {
-    this->texture = texture;
+    this->name = name;
+    this->sprite = sprite;
     this->position = position;
     this->velocity = velocity;
     this->depth = depth;
@@ -20,4 +21,9 @@ GameObject::GameObject(sf::Texture texture, sf::Vector2f position,  sf::Vector2f
 GameObject::~GameObject()
 {
     //dtor
+}
+
+bool GameObject::compareDepth(const GameObject& a, const GameObject& b)
+{
+    return a.depth < b.depth;
 }

@@ -5,14 +5,15 @@ Player::Player()
     this->luminosity = 0;
 }
 
-Player::Player(sf::Texture texture, sf::Vector2f position, sf::Vector2f velocity, int depth, bool alive, bool collidable)
+Player::Player(sf::Sprite sprite, sf::Vector2f position, sf::Vector2f velocity, bool alive, bool collidable)
 {
+    this->name = "Player";
     this->luminosity = 50;
-    this->texture = texture;
-    this->sprite.setTexture(this->texture);
+    this->sprite = sprite;
+    this->sprite.move(position);
     this->position = position;
     this->velocity = velocity;
-    this->depth = depth;
+    this->depth = 100;
     this->alive = alive;
     this->collidable = collidable;
 }

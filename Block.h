@@ -9,13 +9,13 @@
 #ifndef __shine_game__Block__
 #define __shine_game__Block__
 
-#include "GameObject.h"
+//#include "GameObject.h"
 #include "Tile.h"
 
 class Block : public Tile
 {
 public:
-    Block(sf::Sprite sprite, sf::Vector2f position,  sf::Vector2f velocity, int depth, bool alive);
+    Block(sf::Sprite sprite, sf::Vector2f position,  sf::Vector2f velocity, bool alive);
     Block();
     virtual ~Block();
     

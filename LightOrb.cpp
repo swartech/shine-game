@@ -8,13 +8,13 @@ LightOrb::LightOrb()
     //ctor
 }
 
-LightOrb::LightOrb(sf::Sprite sprite, sf::Vector2f position,  sf::Vector2f velocity, int depth, bool alive)
+LightOrb::LightOrb(sf::Sprite sprite, sf::Vector2f position,  sf::Vector2f velocity, bool alive)
 {
     this->sprite = sprite;
     this->position = position;
     this->sprite.move(position);
     this->velocity = velocity;
-    this->depth = depth;
+    this->depth = 99;
     this->alive = alive;
     this->collidable = true;
     this->luminosity = 10;

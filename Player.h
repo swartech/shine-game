@@ -8,10 +8,11 @@ class Player : public GameObject
 {
     public:
         Player();
-        Player(sf::Texture texture, sf::Vector2f position, sf::Vector2f velocity, int depth, bool alive, bool collidable);
+        Player(sf::Sprite sprite, sf::Vector2f position, sf::Vector2f velocity, bool alive, bool collidable);
         ~Player();
     
         int luminosity;
+        std::string name;
         sf::Sprite sprite;
         sf::Texture texture;
         sf::Vector2f position, velocity;

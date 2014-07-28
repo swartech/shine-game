@@ -17,6 +17,7 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include <string>
+#include <algorithm>
 
 // Here is a small helper for you ! Have a look.
 #include "ResourcePath.hpp"
@@ -26,6 +27,7 @@
 #include "Tile.h"
 #include "LightOrb.h"
 #include "level.h"
+#include "Chaser.h"
 
 using namespace std;
 
@@ -49,8 +51,14 @@ int main(int, char const**)
     //Declare Player
     sf:: Texture playerTexture;
     playerTexture.loadFromFile(resourcePath() + "player.png");
-    Player player(playerTexture, sf::Vector2f(WIDTH/2, HEIGHT/2), sf::Vector2f(5, 0), 1, true, true);
-    //Chaser chaser();
+    sf::Sprite playerSprite(playerTexture);
+    Player player(playerSprite, sf::Vector2f(WIDTH/2, HEIGHT/2), sf::Vector2f(5, 0), true, true);
+    
+    
+    sf:: Texture chaserTexture;
+    chaserTexture.loadFromFile(resourcePath() + "Chaser.png");
+    sf::Sprite chaserSprite(chaserTexture);
+    Chaser chaser(chaserSprite, sf::Vector2f(-WIDTH, 0), sf::Vector2f(5.4, 0));
 
     // Set the Icon
     sf::Image icon;
@@ -65,8 +73,18 @@ int main(int, char const**)
     if (!texture.loadFromFile(resourcePath() + "background.png")) {
         return EXIT_FAILURE;
     }
+    texture.setSmooth(true);
     sf::Sprite background(texture);
     background.scale(10, 10);
+    
+    //overlay
+    sf::Texture overlayTexture;
+    if (!overlayTexture.loadFromFile(resourcePath() + "overlay.png")) {
+        return EXIT_FAILURE;
+    }
+    overlayTexture.setSmooth(true);
+    sf::Sprite overlay(overlayTexture);
+    overlay.scale(10, 10);
     
     // Load a sprite to display
     sf::Texture lightOrbTexture;
@@ -82,9 +100,6 @@ int main(int, char const**)
     }
     sf::Sprite blockSprite(blockTexture);
 
-    //move the player sprite to the centre of the screen ... ish
-    player.sprite.move(player.position);
-
     // Create a graphical text to display
     sf::Font font;
     if (!font.loadFromFile(resourcePath() + "sansation.ttf")) {
@@ -96,16 +111,17 @@ int main(int, char const**)
     
     vector<GameObject> gameObjects;
     
+    
     Level level(resourcePath() + "levelTest.png", lightOrbSprite, blockSprite);
-    cout << level.tilemap.size();
+    
     
     for (int i = 0; i < level.tilemap.size(); ++i)
     {
         gameObjects.push_back(level.tilemap[i]);
     }
-    cout << gameObjects.size();
     
-
+    std::sort(gameObjects.begin(), gameObjects.end(), GameObject::compareDepth);
+    
     // Load a music to play
     sf::Music music;
     if (!music.openFromFile(resourcePath() + "nice_music.ogg")) {
@@ -118,11 +134,7 @@ int main(int, char const**)
 
 
     //scrolling view
-    sf::View view(sf::FloatRect(0, 0, WIDTH, HEIGHT));
-
-    float scrollX = player.velocity.x + 0.5;
-    
-    sf::Sprite overlay;
+    sf::View view(sf::FloatRect(0, 0, WIDTH, HEIGHT));    float scrollX = player.velocity.x + 0.2;
 
     // Start the game loop
     while (window.isOpen())
@@ -151,25 +163,28 @@ int main(int, char const**)
             view.move(scrollX, 0);
             window.setView(view);
         }
-        
         // Draw the background
         window.draw(background);
         
         for (int i = 0; i < gameObjects.size(); ++i)
         {
-            //cout << gameObjects[i].sprite.getGlobalBounds().top << "\n";
             window.draw(gameObjects[i].sprite);
         }
 
-        // Draw the player
+        // draw overlay
+        
+        window.draw(overlay);
+        
+        // Draw the player and the chaser
         if(background.getGlobalBounds().width - (WIDTH / 2) > view.getCenter().x)
         {
             player.sprite.move(player.velocity.x, 0);
-            window.draw(player.sprite);
+            chaser.sprite.move(chaser.velocity.x, 0);
         }
         
-        // Draw the string
-        window.draw(text);
+        window.draw(player.sprite);
+        
+        window.draw(chaser.sprite);
 
         // Update the window
         window.display();

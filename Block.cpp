@@ -14,13 +14,14 @@ Block::Block()
     //ctor
 }
 
-Block::Block(sf::Sprite sprite, sf::Vector2f position,  sf::Vector2f velocity, int depth, bool alive)
+Block::Block(sf::Sprite sprite, sf::Vector2f position,  sf::Vector2f velocity, bool alive)
 {
+    this->name = "Block";
     this->sprite = sprite;
     this->sprite.move(position);
     this->position = position;
     this->velocity = velocity;
-    this->depth = depth;
+    this->depth = 50;
     this->alive = alive;
     this->collidable = true;
 }

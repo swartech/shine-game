@@ -3,23 +3,16 @@
 
 #include "gameObject.h"
 
-
 class Player : public GameObject
 {
     public:
+        Player(sf::Texture spritesheet, sf::Sprite sprite, sf::Vector2f position, sf::Vector2f velocity, bool alive, bool collidable);
         Player();
-    Player(sf::Texture spritesheet, sf::Sprite sprite, sf::Vector2f position, sf::Vector2f velocity, bool alive, bool collidable);
-        ~Player();
+        virtual ~Player();
         void update();
     
-        std::string name;
-        sf::Sprite sprite;
         sf::Texture spritesheet;
-        sf::Vector2f position, velocity;
-        int width, height, depth, frameCount, currentFrame, luminosity;
-        bool alive;
-        bool collidable;
-        sf::FloatRect boundingBox;
+        int frameCount, currentFrame, luminosity;
     
     protected:
     private:

@@ -14,6 +14,7 @@
 				<Compiler>
 					<Add option="-Weffc++" />
 					<Add option="-g" />
+					<Add option="-Wl,--allow-multiple-definition" />
 					<Add directory="../../../Desktop/SFML-2.1/include" />
 					<Add directory="include" />
 					<Add directory="../shine-game" />
@@ -44,13 +45,26 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Linker>
+			<Add option="-Wl,--allow-multiple-definition" />
+		</Linker>
+		<Unit filename="Block.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="Block.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Chaser.cpp" />
 		<Unit filename="Chaser.h" />
 		<Unit filename="Chaser.png" />
 		<Unit filename="LightOrb.cpp" />
 		<Unit filename="LightOrb.h" />
-		<Unit filename="Player.cpp" />
-		<Unit filename="Player.h" />
+		<Unit filename="Player.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="Player.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="ResourcePath.hpp" />
 		<Unit filename="Tile.cpp" />
 		<Unit filename="Tile.h" />
@@ -58,6 +72,12 @@
 		<Unit filename="gameObject.cpp" />
 		<Unit filename="gameObject.h" />
 		<Unit filename="icon.png" />
+		<Unit filename="level.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="level.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="main.cpp" />
 		<Unit filename="player.png">
 			<Option link="1" />

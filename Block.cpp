@@ -24,6 +24,7 @@ Block::Block(sf::Sprite sprite, sf::Vector2f position,  sf::Vector2f velocity, b
     this->depth = 50;
     this->alive = alive;
     this->collidable = true;
+
 }
 
 Block::~Block()

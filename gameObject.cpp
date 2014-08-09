@@ -1,4 +1,5 @@
 #include "gameObject.h"
+#include <iostream>
 
 GameObject::GameObject()
 {
@@ -26,6 +27,15 @@ GameObject::~GameObject()
 bool GameObject::compareDepth(const GameObject& a, const GameObject& b)
 {
     return a.depth < b.depth;
+}
+
+void GameObject::handleCollision(GameObject a)
+{
+    this->boundingBox = this->sprite.getGlobalBounds();
+    if (this->boundingBox.intersects(a.boundingBox)){
+        this->velocity.x = 0;
+        std::cout << "OUCH!" << std::endl;
+    }
 }
 
 void GameObject::update()

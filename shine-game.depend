@@ -401,51 +401,81 @@
 1406381719 c:\users\samuel\documents\github\shine-game\shine-game\resourcepath.hpp
 	<string>
 
-1406462980 source:c:\users\samuel\documents\github\shine-game\main.cpp
+1407614032 source:c:\users\samuel\documents\github\shine-game\main.cpp
 	<SFML/Audio.hpp>
 	<SFML/Graphics.hpp>
 	<string>
+	<algorithm>
+	<iostream>
 	"ResourcePath.hpp"
 	"gameObject.h"
 	"Player.h"
 	"Chaser.h"
 	"Tile.h"
 	"LightOrb.h"
-
-1406389995 c:\users\samuel\documents\github\shine-game\resourcepath.hpp
-	<string>
-
-1406419242 c:\users\samuel\documents\github\shine-game\gameobject.h
-	<SFML/Audio.hpp>
-	<SFML/Graphics.hpp>
-
-1406420853 source:c:\users\samuel\documents\github\shine-game\gameobject.cpp
-	"gameObject.h"
-
-1406462899 source:c:\users\samuel\documents\github\shine-game\player.cpp
-	"Player.h"
-
-1406463034 c:\users\samuel\documents\github\shine-game\player.h
-	"gameObject.h"
-
-1406400328 source:c:\users\samuel\documents\github\shine-game\chaser.cpp
+	"level.h"
 	"Chaser.h"
 
-1406401605 c:\users\samuel\documents\github\shine-game\chaser.h
+1406572852 c:\users\samuel\documents\github\shine-game\resourcepath.hpp
+	<string>
+
+1407613211 c:\users\samuel\documents\github\shine-game\gameobject.h
+	<SFML/Audio.hpp>
+	<SFML/Graphics.hpp>
+	<string>
+
+1407613211 source:c:\users\samuel\documents\github\shine-game\gameobject.cpp
+	"gameObject.h"
+	<iostream>
+
+1407606995 source:c:\users\samuel\documents\github\shine-game\player.cpp
+	"Player.h"
+
+1407087654 c:\users\samuel\documents\github\shine-game\player.h
 	"gameObject.h"
 
-1406400078 source:c:\users\samuel\documents\github\shine-game\lightorb.cpp
-	"LightOrb.h"
+1406572852 source:c:\users\samuel\documents\github\shine-game\chaser.cpp
+	"Chaser.h"
 
-1406419307 c:\users\samuel\documents\github\shine-game\lightorb.h
+1406572852 c:\users\samuel\documents\github\shine-game\chaser.h
+	"gameObject.h"
+
+1406572852 source:c:\users\samuel\documents\github\shine-game\lightorb.cpp
+	"LightOrb.h"
+	"ResourcePath.hpp"
+
+1406572852 c:\users\samuel\documents\github\shine-game\lightorb.h
 	"Tile.h"
 
-1406401605 c:\users\samuel\documents\github\shine-game\tile.h
+1406572852 c:\users\samuel\documents\github\shine-game\tile.h
 	"gameObject.h"
 
-1406397978 source:c:\users\samuel\documents\github\shine-game\tile.cpp
+1406572852 source:c:\users\samuel\documents\github\shine-game\tile.cpp
 	"Tile.h"
 
 1406462738 c:\users\samuel\documents\github\shine-game\player.cpp
 	"Player.h"
+
+1406572855 c:\users\samuel\documents\github\shine-game\level.h
+	<iostream>
+	<vector>
+	<string>
+	<Tile.h>
+	<SFML/Graphics.hpp>
+
+1406572855 source:c:\users\samuel\documents\github\shine-game\level.cpp
+	"level.h"
+	<fstream>
+	<SFML/Graphics.hpp>
+	<SFML/Graphics/Image.hpp>
+	"LightOrb.h"
+	"Block.h"
+	"ResourcePath.hpp"
+
+1406572852 c:\users\samuel\documents\github\shine-game\block.h
+	"Tile.h"
+
+1407612465 source:c:\users\samuel\documents\github\shine-game\block.cpp
+	"Block.h"
+	"ResourcePath.hpp"
 
